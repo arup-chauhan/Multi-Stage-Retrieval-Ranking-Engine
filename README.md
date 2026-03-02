@@ -1,6 +1,10 @@
 # Multi-Stage Retrieval and Ranking Engine
 
-Production-ready hybrid search platform combining BM25 lexical retrieval, semantic ANN retrieval, fusion, and LTR reranking.
+A distributed hybrid retrieval engine that combines Apache Solr BM25 lexical retrieval with ANN semantic retrieval, then reranks results using LightGBM-style LTR scoring.
+
+## Project Successor
+This repository is a focused successor to [Hybrid-Retrieval-and-Ranking-Engine](https://github.com/arup-chauhan/Hybrid-Retrieval-and-Ranking-Engine).  
+The earlier project emphasized broader service decomposition; this one centers on multi-stage retrieval quality, ranking effectiveness, and cleaner evaluation.
 
 ## Highlights
 - Hybrid retrieval: lexical precision + semantic recall.
