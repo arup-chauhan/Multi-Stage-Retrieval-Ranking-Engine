@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - services/query/deployment.yaml
+  - services/query/service.yaml
+  - services/query/hpa.yaml
+  - services/vector/deployment.yaml
+  - services/vector/service.yaml
+  - services/vector/hpa.yaml
+  - services/ranking/deployment.yaml
+  - services/ranking/service.yaml
+  - services/ranking/hpa.yaml
+  - redis/redis-deployment.yaml
+  - redis/redis-service.yaml
+  - solr/solr-deployment.yaml
+  - solr/solr-service.yaml

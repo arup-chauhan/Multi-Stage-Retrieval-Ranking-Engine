@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query-service
+  labels:
+    app: query-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: query-service
+  template:
+    metadata:
+      labels:
+        app: query-service
+    spec:
+      containers:
+        - name: query-service
+          image: msrr/query-service:latest
+          ports:
+            - containerPort: 8083
+          env:
+            - name: ENABLE_SEMANTIC
+              value: "true"
+            - name: ENABLE_RERANK
+              value: "false"
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"

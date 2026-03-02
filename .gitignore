@@ -1,0 +1,36 @@
+# Project-specific
+TO-DO.md
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+
+# Environment
+.env
+.env.local
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Java/Gradle/Maven
+build/
+target/
+.gradle/
+.m2repo/
+
+# Node (for tooling)
+node_modules/
+
+# Logs
+*.log
+
+# Benchmark artifacts
+docs/benchmarks/latest-*/
+docs/benchmarks/ci-smoke/

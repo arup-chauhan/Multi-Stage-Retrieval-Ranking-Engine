@@ -1,0 +1,18 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: query-service
+
+vector-service:
+  base-url: ${VECTOR_SERVICE_BASE_URL:http://vector-service:8084}
+  timeout-ms: ${VECTOR_SERVICE_TIMEOUT_MS:300}
+
+ranking-service:
+  base-url: ${RANKING_SERVICE_BASE_URL:http://ranking-service:8085}
+  timeout-ms: ${RANKING_SERVICE_TIMEOUT_MS:300}
+
+feature:
+  enable-semantic: ${ENABLE_SEMANTIC:true}
+  enable-rerank: ${ENABLE_RERANK:false}

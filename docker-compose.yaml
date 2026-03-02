@@ -1,0 +1,50 @@
+name: multi-stage-retrieval-ranking-engine
+
+services:
+  query-service:
+    build: ./query-service
+    container_name: query-service
+    ports:
+      - "${QUERY_HOST_PORT:-8083}:8083"
+    environment:
+      ENABLE_SEMANTIC: ${ENABLE_SEMANTIC:-true}
+      ENABLE_RERANK: ${ENABLE_RERANK:-false}
+      VECTOR_SERVICE_BASE_URL: http://vector-service:8084
+      RANKING_SERVICE_BASE_URL: http://ranking-service:8085
+      VECTOR_SERVICE_TIMEOUT_MS: 300
+      RANKING_SERVICE_TIMEOUT_MS: 300
+    depends_on:
+      - solr
+      - redis
+      - vector-service
+      - ranking-service
+
+  vector-service:
+    build: ./vector-service
+    container_name: vector-service
+    ports:
+      - "${VECTOR_HOST_PORT:-8084}:8084"
+
+  ranking-service:
+    build: ./ranking-service
+    container_name: ranking-service
+    ports:
+      - "${RANKING_HOST_PORT:-8085}:8085"
+
+  solr:
+    image: solr:9.6
+    container_name: solr
+    ports:
+      - "${SOLR_HOST_PORT:-8983}:8983"
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "${REDIS_HOST_PORT:-6380}:6379"
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "${OLLAMA_HOST_PORT:-11434}:11434"
